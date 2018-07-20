@@ -25,11 +25,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
@@ -66,11 +69,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
@@ -90,11 +96,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>

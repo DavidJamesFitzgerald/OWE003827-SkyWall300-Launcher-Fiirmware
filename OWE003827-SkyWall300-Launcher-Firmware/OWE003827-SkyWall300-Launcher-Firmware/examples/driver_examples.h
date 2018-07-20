@@ -12,7 +12,11 @@
 extern "C" {
 #endif
 
+void QSPI_FLASH_example(void);
+
 void USART_SYSTEM_SERCOM1_example(void);
+
+void USART_DIAG_SERCOM4_example(void);
 
 void SPI_PROJECTILE_SERCOM5_example(void);
 

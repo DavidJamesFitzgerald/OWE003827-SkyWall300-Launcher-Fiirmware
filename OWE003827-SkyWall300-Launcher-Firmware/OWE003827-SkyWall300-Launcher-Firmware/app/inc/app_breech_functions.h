@@ -7,30 +7,32 @@
  */
   
 /**
- *	@file		main.c
+ *	@file		app_breech_functions.h
  *
  *	@copyright	OpenWorks Engineering Ltd. 2018
  *
  *  @author		Created by David Fitzgerald (david.fitzgerald@openworksengineering.com)
  *  @date		Last modified on 20 July 2018
  *
- *  @brief		Contains main state machine. This file is editable.
+ *  @brief		Contains breech definitions. This file is editable.
  *
  */
-  
-#include <atmel_start.h>
 
-#include "app/inc/app_system_state_handler.h"
+#ifndef APP_BREECH_FUNCTIONS_H_
+#define APP_BREECH_FUNCTIONS_H_
 
-int main(void)
+typedef enum
 {
-	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
+	BREECH_STATE_OPEN,
+	BREECH_STATE_CLOSED_UNLOCKED,
+	BREECH_STATE_CLOSED_LOCKED,
+	BREECH_STATE_OPEN_INDERTERMINATE,
+	BREECH_STATE_CLOSED_INDERTERMINATE,
+	BREECH_STATE_INDERTERMINATE,
+	BREECH_STATE_ERROR,
+	BREECH_STATE_MAX_ENUM	
+} breech_state_e;
 
-	app_system_state_init();
-	
-	/* Replace with your application code */
-	while(true)
-	{
-	}
-}
+breech_state_e app_get_breech_position(void);
+
+#endif /* APP_BREECH_FUNCTIONS_H_ */

@@ -7,30 +7,41 @@
  */
   
 /**
- *	@file		main.c
+ *	@file		app_system_state_handler.c
  *
  *	@copyright	OpenWorks Engineering Ltd. 2018
  *
  *  @author		Created by David Fitzgerald (david.fitzgerald@openworksengineering.com)
  *  @date		Last modified on 20 July 2018
  *
- *  @brief		Contains main state machine. This file is editable.
+ *  @brief		Contains system state functions. This file is editable.
  *
  */
-  
-#include <atmel_start.h>
-
+#include "app/inc/app_globals.h"
 #include "app/inc/app_system_state_handler.h"
+#include "app/inc/app_breech_functions.h"
 
-int main(void)
+static bool init_motor_state(void)
 {
-	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
+	bool success = false;
 
-	app_system_state_init();
-	
-	/* Replace with your application code */
-	while(true)
+	if(BREECH_STATE_ERROR == app_get_breech_position())
 	{
+		ASSERT(0);
 	}
+	else
+	{
+		success = true;
+	}
+
+	return success;
+}
+
+bool app_system_state_init(void)
+{
+	bool success = false;
+	
+	success = init_motor_state();
+	
+	return success;
 }

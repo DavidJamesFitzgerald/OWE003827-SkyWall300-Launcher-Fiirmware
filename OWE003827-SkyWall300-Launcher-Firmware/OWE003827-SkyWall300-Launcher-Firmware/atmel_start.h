@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "driver_init.h"
+#include "spi_nor_flash_main.h"
 
 /**
  * Initializes MCU, drivers and middleware in the project

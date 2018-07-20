@@ -2,9 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+app\src\app_breech_functions.c
+
 app\src\app_proj_comms.c
 
+app\src\app_qspi_storage.c
+
 app\src\app_system_comms.c
+
+app\src\app_system_state_handler.c
+
+app\src\app_valve_control.c
 
 atmel_start.c
 
@@ -27,6 +35,8 @@ hal\src\hal_init.c
 hal\src\hal_io.c
 
 hal\src\hal_pwm.c
+
+hal\src\hal_qspi_sync.c
 
 hal\src\hal_sleep.c
 
@@ -62,6 +72,8 @@ hpl\oscctrl\hpl_oscctrl.c
 
 hpl\pm\hpl_pm.c
 
+hpl\qspi\hpl_qspi.c
+
 hpl\ramecc\hpl_ramecc.c
 
 hpl\sercom\hpl_sercom.c
@@ -71,4 +83,10 @@ hpl\tc\hpl_tc.c
 hpl\usb\hpl_usb.c
 
 main.c
+
+spi_nor_flash\s25fl116k\s25fl116k.c
+
+spi_nor_flash\spi_nor_flash.c
+
+spi_nor_flash_main.c
 

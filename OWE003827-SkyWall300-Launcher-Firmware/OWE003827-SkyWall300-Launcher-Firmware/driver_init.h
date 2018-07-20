@@ -21,6 +21,9 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_qspi_sync.h>
+
+#include <hal_usart_async.h>
 #include <hal_usart_async.h>
 
 #include <hal_spi_m_async.h>
@@ -31,7 +34,9 @@ extern "C" {
 
 #include "hal_usb_device.h"
 
+extern struct qspi_sync_descriptor   QSPI_FLASH;
 extern struct usart_async_descriptor USART_SYSTEM_SERCOM1;
+extern struct usart_async_descriptor USART_DIAG_SERCOM4;
 
 extern struct spi_m_async_descriptor SPI_PROJECTILE_SERCOM5;
 
@@ -39,9 +44,17 @@ extern struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
 
 extern struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
 
+void QSPI_FLASH_PORT_init(void);
+void QSPI_FLASH_CLOCK_init(void);
+void QSPI_FLASH_init(void);
+
 void USART_SYSTEM_SERCOM1_PORT_init(void);
 void USART_SYSTEM_SERCOM1_CLOCK_init(void);
 void USART_SYSTEM_SERCOM1_init(void);
+
+void USART_DIAG_SERCOM4_PORT_init(void);
+void USART_DIAG_SERCOM4_CLOCK_init(void);
+void USART_DIAG_SERCOM4_init(void);
 
 void SPI_PROJECTILE_SERCOM5_PORT_init(void);
 void SPI_PROJECTILE_SERCOM5_CLOCK_init(void);

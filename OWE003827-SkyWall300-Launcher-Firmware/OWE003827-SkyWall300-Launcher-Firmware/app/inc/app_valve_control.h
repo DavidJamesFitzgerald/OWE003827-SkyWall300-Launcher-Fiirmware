@@ -7,30 +7,20 @@
  */
   
 /**
- *	@file		main.c
+ *	@file		app_valve_control.h
  *
  *	@copyright	OpenWorks Engineering Ltd. 2018
  *
  *  @author		Created by David Fitzgerald (david.fitzgerald@openworksengineering.com)
  *  @date		Last modified on 20 July 2018
  *
- *  @brief		Contains main state machine. This file is editable.
+ *  @brief		Contains valve control definitions. This file is editable.
  *
  */
-  
-#include <atmel_start.h>
 
-#include "app/inc/app_system_state_handler.h"
+#ifndef APP_VALVE_CONTROL_H_
+#define APP_VALVE_CONTROL_H_
 
-int main(void)
-{
-	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
+bool app_valve_control_init(void);
 
-	app_system_state_init();
-	
-	/* Replace with your application code */
-	while(true)
-	{
-	}
-}
+#endif /* APP_VALVE_CONTROL_H_ */

@@ -14,15 +14,246 @@
 /*! The buffer size for USART */
 #define USART_SYSTEM_SERCOM1_BUFFER_SIZE 16
 
+/*! The buffer size for USART */
+#define USART_DIAG_SERCOM4_BUFFER_SIZE 16
+
 struct usart_async_descriptor USART_SYSTEM_SERCOM1;
+struct usart_async_descriptor USART_DIAG_SERCOM4;
 
 static uint8_t USART_SYSTEM_SERCOM1_buffer[USART_SYSTEM_SERCOM1_BUFFER_SIZE];
+static uint8_t USART_DIAG_SERCOM4_buffer[USART_DIAG_SERCOM4_BUFFER_SIZE];
+
+struct qspi_sync_descriptor QSPI_FLASH;
 
 struct spi_m_async_descriptor SPI_PROJECTILE_SERCOM5;
 
 struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
 
 struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
+
+void QSPI_FLASH_PORT_init(void)
+{
+
+	// Set pin direction to input
+	gpio_set_pin_direction(QSPI_CS, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(QSPI_CS,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_CS, PINMUX_PB11H_QSPI_CS);
+
+	gpio_set_pin_direction(QSPI_IO0,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(QSPI_IO0,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(QSPI_IO0,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_IO0,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA08H_QSPI_DATA0"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA08H_QSPI_DATA0);
+
+	gpio_set_pin_direction(QSPI_IO1,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(QSPI_IO1,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(QSPI_IO1,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_IO1,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA09H_QSPI_DATA1"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA09H_QSPI_DATA1);
+
+	gpio_set_pin_direction(QSPI_IO2,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(QSPI_IO2,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(QSPI_IO2,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_IO2,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA10H_QSPI_DATA2"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA10H_QSPI_DATA2);
+
+	gpio_set_pin_direction(QSPI_IO3,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(QSPI_IO3,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(QSPI_IO3,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_IO3,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA11H_QSPI_DATA3"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA11H_QSPI_DATA3);
+
+	// Set pin direction to input
+	gpio_set_pin_direction(QSPI_SCK, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(QSPI_SCK,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(QSPI_SCK, PINMUX_PB10H_QSPI_SCK);
+}
+
+void QSPI_FLASH_CLOCK_init(void)
+{
+	hri_mclk_set_AHBMASK_QSPI_bit(MCLK);
+	hri_mclk_set_AHBMASK_QSPI_2X_bit(MCLK);
+	hri_mclk_set_APBCMASK_QSPI_bit(MCLK);
+}
+
+void QSPI_FLASH_init(void)
+{
+	QSPI_FLASH_CLOCK_init();
+	qspi_sync_init(&QSPI_FLASH, QSPI);
+	QSPI_FLASH_PORT_init();
+}
 
 /**
  * \brief USART Clock initialization function
@@ -62,6 +293,46 @@ void USART_SYSTEM_SERCOM1_init(void)
 	usart_async_init(
 	    &USART_SYSTEM_SERCOM1, SERCOM1, USART_SYSTEM_SERCOM1_buffer, USART_SYSTEM_SERCOM1_BUFFER_SIZE, (void *)NULL);
 	USART_SYSTEM_SERCOM1_PORT_init();
+}
+
+/**
+ * \brief USART Clock initialization function
+ *
+ * Enables register interface and peripheral clock
+ */
+void USART_DIAG_SERCOM4_CLOCK_init()
+{
+
+	hri_gclk_write_PCHCTRL_reg(GCLK, SERCOM4_GCLK_ID_CORE, CONF_GCLK_SERCOM4_CORE_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+	hri_gclk_write_PCHCTRL_reg(GCLK, SERCOM4_GCLK_ID_SLOW, CONF_GCLK_SERCOM4_SLOW_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+
+	hri_mclk_set_APBDMASK_SERCOM4_bit(MCLK);
+}
+
+/**
+ * \brief USART pinmux initialization function
+ *
+ * Set each required pin to USART functionality
+ */
+void USART_DIAG_SERCOM4_PORT_init()
+{
+
+	gpio_set_pin_function(DIAG_COMMS_RX, PINMUX_PB12C_SERCOM4_PAD0);
+
+	gpio_set_pin_function(DIAG_COMMS_TX, PINMUX_PB13C_SERCOM4_PAD1);
+}
+
+/**
+ * \brief USART initialization function
+ *
+ * Enables USART peripheral, clocks and initializes USART driver
+ */
+void USART_DIAG_SERCOM4_init(void)
+{
+	USART_DIAG_SERCOM4_CLOCK_init();
+	usart_async_init(
+	    &USART_DIAG_SERCOM4, SERCOM4, USART_DIAG_SERCOM4_buffer, USART_DIAG_SERCOM4_BUFFER_SIZE, (void *)NULL);
+	USART_DIAG_SERCOM4_PORT_init();
 }
 
 void SPI_PROJECTILE_SERCOM5_PORT_init(void)
@@ -539,7 +810,10 @@ void system_init(void)
 
 	gpio_set_pin_function(DUMP_VALVE_COARSE_OP, GPIO_PIN_FUNCTION_OFF);
 
+	QSPI_FLASH_init();
+
 	USART_SYSTEM_SERCOM1_init();
+	USART_DIAG_SERCOM4_init();
 
 	SPI_PROJECTILE_SERCOM5_init();
 

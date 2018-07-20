@@ -55,6 +55,7 @@
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_gpio.h" IsConfig="false" Hash="0bPvDWUqGv5qkRQRzFj7fg" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_init.h" IsConfig="false" Hash="OrYSVpF3YA5XrOBImWpdSg" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_io.h" IsConfig="false" Hash="XZRSabc39WU/0MFBLYGLvQ" />
+          <AcmeProjectActionInfo Action="File" Source="hal/include/hal_qspi_sync.h" IsConfig="false" Hash="4qiSjqQ6OSFtUrCffFwcHw" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_sleep.h" IsConfig="false" Hash="KuZDwgrLdU+fuMG82ZFTqg" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_spi_m_async.h" IsConfig="false" Hash="oG65E/r6mhAhIPMqjNqQUw" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_usb_device.h" IsConfig="false" Hash="nvejrPlc1H5xowRDNbRXjA" />
@@ -68,6 +69,9 @@
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_i2c_s_sync.h" IsConfig="false" Hash="dEX/4Z4RcAudPnmBvYoAeA" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_init.h" IsConfig="false" Hash="QtMCPnjBzySOYli3ce/dyQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_irq.h" IsConfig="false" Hash="n8mGC0gLHfUhVTjLflKVXw" />
+          <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_qspi.h" IsConfig="false" Hash="3pJJ6N4ADy/bJ+2DogLk4g" />
+          <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_qspi_dma.h" IsConfig="false" Hash="lk4Jucsw6aNOKkh1omfXow" />
+          <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_qspi_sync.h" IsConfig="false" Hash="4zf+sgXtmRMPXlmNh5HEAA" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_ramecc.h" IsConfig="false" Hash="jEqIEhx0d2x1jduY0A9CFQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_sleep.h" IsConfig="false" Hash="JOXa2/KqNtt950+B1ZJfSQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_spi.h" IsConfig="false" Hash="wAxvxvj1p/CvWEoawsWIBw" />
@@ -88,6 +92,7 @@
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_gpio.c" IsConfig="false" Hash="wIzN9zQd1b8qd+RDoSkD7Q" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_init.c" IsConfig="false" Hash="bJvq8kpNbbOE2nZfChOGTQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_io.c" IsConfig="false" Hash="FYpavzYSxhFzVrBQtcH2ZA" />
+          <AcmeProjectActionInfo Action="File" Source="hal/src/hal_qspi_sync.c" IsConfig="false" Hash="QXpQdsNQ9F+mMPT7W7RFuw" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_sleep.c" IsConfig="false" Hash="3ebghfB3jYLpnqoi3fhq3g" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_spi_m_async.c" IsConfig="false" Hash="rkk+gyb94F8vcawvqf2YKg" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_usb_device.c" IsConfig="false" Hash="kjTCQ0tLOU711sB984mqnQ" />
@@ -149,12 +154,16 @@
           <AcmeProjectActionInfo Action="File" Source="hri/hri_trng_e54.h" IsConfig="false" Hash="mu/DWUCDxlZSGugfxVQZnA" />
           <AcmeProjectActionInfo Action="File" Source="hri/hri_usb_e54.h" IsConfig="false" Hash="lFyOqEEGs+WJytpG4lL3Vw" />
           <AcmeProjectActionInfo Action="File" Source="hri/hri_wdt_e54.h" IsConfig="false" Hash="w95DtLPi4BxGRdxHuxu21g" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash/s25fl116k/s25fl116k.c" IsConfig="false" Hash="VFI9eRYCUiBDCiqEADvUMQ" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash/s25fl116k/s25fl116k.h" IsConfig="false" Hash="Sbrh1s0b9UD5DpYO84rQig" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash/spi_nor_flash.c" IsConfig="false" Hash="TCraZft50OJXeOYtNzasUw" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash/spi_nor_flash.h" IsConfig="false" Hash="k5fsJwmFou4udJsMuAaH3g" />
           <AcmeProjectActionInfo Action="File" Source="main.c" IsConfig="false" Hash="k0AH7j+BrmdFhBPzCCMptA" />
-          <AcmeProjectActionInfo Action="File" Source="driver_init.c" IsConfig="false" Hash="AbkPtap+CbFeKnbB+dNeCA" />
-          <AcmeProjectActionInfo Action="File" Source="driver_init.h" IsConfig="false" Hash="chf8nKmMTeGrCzya2+DLZg" />
-          <AcmeProjectActionInfo Action="File" Source="atmel_start_pins.h" IsConfig="false" Hash="WIZqxY4e+nI2wMpMroaAAw" />
-          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.h" IsConfig="false" Hash="vMurQle1G4CaTYLZ+WRY3A" />
-          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.c" IsConfig="false" Hash="rcKOfsau/Op0lqKnjT/3HA" />
+          <AcmeProjectActionInfo Action="File" Source="driver_init.c" IsConfig="false" Hash="oO06MoL0HQt4VrwMYISe0w" />
+          <AcmeProjectActionInfo Action="File" Source="driver_init.h" IsConfig="false" Hash="LyvG+VYCzwsCFIeQxS/D7A" />
+          <AcmeProjectActionInfo Action="File" Source="atmel_start_pins.h" IsConfig="false" Hash="j/d5w1mAv9C/D4B1Szxalg" />
+          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.h" IsConfig="false" Hash="FRRmqczKH6MuNTh02I5Kzg" />
+          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.c" IsConfig="false" Hash="K59hreSD74QEXrOlbqpFsQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_pwm.h" IsConfig="false" Hash="RXcBZcci/7vXKRJKNIq/Kw" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_usart_async.h" IsConfig="false" Hash="km9RyrLcCSavva/oZ2rcOQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_missing_features.h" IsConfig="false" Hash="XsAvpgfutzkw0Y5SydYFaw" />
@@ -178,22 +187,27 @@
           <AcmeProjectActionInfo Action="File" Source="hpl/pm/hpl_pm.c" IsConfig="false" Hash="bcht9HqY6EFL6gVGYXeVfQ" />
           <AcmeProjectActionInfo Action="File" Source="hpl/pm/hpl_pm_base.h" IsConfig="false" Hash="KOec1StxUZxY/RKBDbMkpg" />
           <AcmeProjectActionInfo Action="File" Source="hpl/port/hpl_gpio_base.h" IsConfig="false" Hash="RI3BbUff9yvrKqEhD9yKQA" />
+          <AcmeProjectActionInfo Action="File" Source="hpl/qspi/hpl_qspi.c" IsConfig="false" Hash="kcTOrixin2H2Rt8x9WBNGQ" />
           <AcmeProjectActionInfo Action="File" Source="hpl/ramecc/hpl_ramecc.c" IsConfig="false" Hash="pMdmwVWBg16VG8HOwA3DPw" />
-          <AcmeProjectActionInfo Action="File" Source="hpl/sercom/hpl_sercom.c" IsConfig="false" Hash="Wljv+gbVELBa+J5lNxQqCg" />
+          <AcmeProjectActionInfo Action="File" Source="hpl/sercom/hpl_sercom.c" IsConfig="false" Hash="ICsbUKWHC9s9lNskD+ErVA" />
           <AcmeProjectActionInfo Action="File" Source="hpl/tc/hpl_tc.c" IsConfig="false" Hash="oL98iIuHggMqyOU6t38wxw" />
           <AcmeProjectActionInfo Action="File" Source="hpl/tc/hpl_tc_base.h" IsConfig="false" Hash="gjj5IyaZPy6sUReifzS1GQ" />
           <AcmeProjectActionInfo Action="File" Source="hpl/usb/hpl_usb.c" IsConfig="false" Hash="8jKTv+a5DCKb7wyk44rsaQ" />
-          <AcmeProjectActionInfo Action="File" Source="atmel_start.h" IsConfig="false" Hash="9RBG5E2ViQiSP2Gn4/FGpA" />
-          <AcmeProjectActionInfo Action="File" Source="atmel_start.c" IsConfig="false" Hash="1RHIE7zTtYK4DURNPUqF9w" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash_main.c" IsConfig="false" Hash="vosCUyo4YtwTKvowkjNw8Q" />
+          <AcmeProjectActionInfo Action="File" Source="spi_nor_flash_main.h" IsConfig="false" Hash="sEd7u9oYW3JDUrqk5Gt08g" />
+          <AcmeProjectActionInfo Action="File" Source="atmel_start.h" IsConfig="false" Hash="2b2DiU3gnNuEfpqrVWXncQ" />
+          <AcmeProjectActionInfo Action="File" Source="atmel_start.c" IsConfig="false" Hash="lXgrF/PB/4WuEL3k3jdVpQ" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_dmac_config.h" IsConfig="true" Hash="mNec32O7w53e4vDmQlvjCA" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_gclk_config.h" IsConfig="true" Hash="qFfXbIiu7Skw/l5fYsEt7Q" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_mclk_config.h" IsConfig="true" Hash="pxBzoQXTG66x4dbzVzxteg" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_osc32kctrl_config.h" IsConfig="true" Hash="WaSCqI39InwkVjsbQqYAcA" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_oscctrl_config.h" IsConfig="true" Hash="HO1Z9YoEymQ1BPYP8UeQOQ" />
-          <AcmeProjectActionInfo Action="File" Source="config/hpl_sercom_config.h" IsConfig="true" Hash="9GNUwa6Sss8gUJq/vfUZlw" />
+          <AcmeProjectActionInfo Action="File" Source="config/hpl_qspi_config.h" IsConfig="true" Hash="fL28+JP6+63UsvQfyKTJSA" />
+          <AcmeProjectActionInfo Action="File" Source="config/hpl_sercom_config.h" IsConfig="true" Hash="zsU+Abls9EaDUSTY0YbRdw" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_tc_config.h" IsConfig="true" Hash="wFS0Q7WmoXjj439xLvyumA" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_usb_config.h" IsConfig="true" Hash="OTnXMB+/o/b7gPmkxUTUeQ" />
-          <AcmeProjectActionInfo Action="File" Source="config/peripheral_clk_config.h" IsConfig="true" Hash="5cOZGcrMabT5mxZEIN3bkg" />
+          <AcmeProjectActionInfo Action="File" Source="config/peripheral_clk_config.h" IsConfig="true" Hash="dPODvCdQ2DX1eRt/0YteqQ" />
+          <AcmeProjectActionInfo Action="File" Source="config/conf_spi_nor_flash.h" IsConfig="true" Hash="EgsbEgwxkXEC4lfXMOuUmA" />
         </AcmeActionInfos>
         <NonsecureFilesInfo />
       </AcmeProjectConfig>
@@ -228,11 +242,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
@@ -269,11 +286,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
@@ -293,11 +313,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
@@ -333,11 +356,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
@@ -375,11 +401,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
@@ -400,11 +429,14 @@
       <Value>../hpl/oscctrl</Value>
       <Value>../hpl/pm</Value>
       <Value>../hpl/port</Value>
+      <Value>../hpl/qspi</Value>
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
       <Value>../hpl/usb</Value>
       <Value>../hri</Value>
+      <Value>../spi_nor_flash</Value>
+      <Value>../spi_nor_flash/s25fl116k</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
@@ -413,16 +445,43 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\inc\app_breech_functions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\inc\app_globals.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\inc\app_proj_comms.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\inc\app_qspi_storage.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\inc\app_system_comms.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\inc\app_system_state_handler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\inc\app_valve_control.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\src\app_breech_functions.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\src\app_proj_comms.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\src\app_qspi_storage.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\src\app_system_comms.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\src\app_system_state_handler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\src\app_valve_control.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="atmel_start.c">
@@ -432,6 +491,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="atmel_start_pins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Config\conf_spi_nor_flash.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Config\hpl_dmac_config.h">
@@ -447,6 +509,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Config\hpl_oscctrl_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Config\hpl_qspi_config.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Config\hpl_sercom_config.h">
@@ -500,6 +565,9 @@
     <Compile Include="hal\include\hal_pwm.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hal\include\hal_qspi_sync.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\include\hal_sleep.h">
       <SubType>compile</SubType>
     </Compile>
@@ -546,6 +614,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\include\hpl_pwm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\include\hpl_qspi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\include\hpl_qspi_dma.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\include\hpl_qspi_sync.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\include\hpl_ramecc.h">
@@ -621,6 +698,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\src\hal_pwm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\src\hal_qspi_sync.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\src\hal_sleep.c">
@@ -717,6 +797,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hpl\port\hpl_gpio_base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hpl\qspi\hpl_qspi.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hpl\ramecc\hpl_ramecc.c">
@@ -866,6 +949,24 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="spi_nor_flash\s25fl116k\s25fl116k.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi_nor_flash\s25fl116k\s25fl116k.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi_nor_flash\spi_nor_flash.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi_nor_flash\spi_nor_flash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi_nor_flash_main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spi_nor_flash_main.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\inc" />
@@ -889,11 +990,14 @@
     <Folder Include="hpl\oscctrl\" />
     <Folder Include="hpl\pm\" />
     <Folder Include="hpl\port\" />
+    <Folder Include="hpl\qspi\" />
     <Folder Include="hpl\ramecc\" />
     <Folder Include="hpl\sercom\" />
     <Folder Include="hpl\tc\" />
     <Folder Include="hpl\usb\" />
     <Folder Include="hri\" />
+    <Folder Include="spi_nor_flash\" />
+    <Folder Include="spi_nor_flash\s25fl116k\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Device_Startup\same54p20a_flash.ld">

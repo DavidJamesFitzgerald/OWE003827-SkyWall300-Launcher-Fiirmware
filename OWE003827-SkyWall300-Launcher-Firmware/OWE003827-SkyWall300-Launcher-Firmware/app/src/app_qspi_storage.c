@@ -7,30 +7,14 @@
  */
   
 /**
- *	@file		main.c
+ *	@file		app_qspi_storage.c
  *
  *	@copyright	OpenWorks Engineering Ltd. 2018
  *
  *  @author		Created by David Fitzgerald (david.fitzgerald@openworksengineering.com)
  *  @date		Last modified on 20 July 2018
  *
- *  @brief		Contains main state machine. This file is editable.
+ *  @brief		Contains Quad SPI storage functions. This file is editable.
  *
  */
-  
-#include <atmel_start.h>
 
-#include "app/inc/app_system_state_handler.h"
-
-int main(void)
-{
-	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
-
-	app_system_state_init();
-	
-	/* Replace with your application code */
-	while(true)
-	{
-	}
-}
