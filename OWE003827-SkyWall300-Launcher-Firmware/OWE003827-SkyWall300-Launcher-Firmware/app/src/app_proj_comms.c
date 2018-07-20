@@ -17,3 +17,5 @@
  *  @brief		Contains projectile comms functions. This file is editable.
  *
  */
+
+// TODO Ensure the level translator is enabled via PROJECTILE_COMMS_ENABLE_OP

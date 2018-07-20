@@ -308,6 +308,20 @@ void system_init(void)
 
 	gpio_set_pin_function(BREECH_LOCK_MOTOR_DIR_OP, GPIO_PIN_FUNCTION_OFF);
 
+	// GPIO on PB21
+
+	// Set pin direction to output
+	gpio_set_pin_direction(PROJECTILE_COMMS_ENABLE_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(PROJECTILE_COMMS_ENABLE_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(PROJECTILE_COMMS_ENABLE_OP, GPIO_PIN_FUNCTION_OFF);
+
 	// GPIO on PB25
 
 	// Set pin direction to input

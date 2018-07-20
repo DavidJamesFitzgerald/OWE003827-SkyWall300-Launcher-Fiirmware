@@ -1014,6 +1014,12 @@ drivers:
         configuration:
           usb_gclk_selection: Generic clock generator 0
 pads:
+  PROJECTILE_COMMS_ENABLE_OP:
+    name: PB21
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PB21
+    mode: Digital output
+    user_label: PROJECTILE_COMMS_ENABLE_OP
+    configuration: null
   PROJECTILE_FITTED_FB:
     name: PA20
     definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA20
