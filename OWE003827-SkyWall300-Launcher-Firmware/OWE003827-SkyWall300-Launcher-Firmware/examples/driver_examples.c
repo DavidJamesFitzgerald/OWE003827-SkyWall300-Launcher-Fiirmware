@@ -10,6 +10,37 @@
 #include "driver_init.h"
 #include "utils.h"
 
+static void convert_cb_ADC_LAUNCHER(const struct adc_async_descriptor *const descr, const uint8_t channel)
+{
+}
+
+/**
+ * Example of using ADC_LAUNCHER to generate waveform.
+ */
+void ADC_LAUNCHER_example(void)
+{
+	adc_async_enable_channel(&ADC_LAUNCHER, 0);
+	adc_async_register_callback(&ADC_LAUNCHER, 0, ADC_ASYNC_CONVERT_CB, convert_cb_ADC_LAUNCHER);
+	adc_async_start_conversion(&ADC_LAUNCHER);
+}
+
+static uint16_t example_DAC_LAUNCHER[10] = {0, 100, 200, 300, 400, 500, 600, 700, 800, 900};
+
+static void tx_cb_DAC_LAUNCHER(struct dac_async_descriptor *const descr, const uint8_t ch)
+{
+	dac_async_write(descr, 0, example_DAC_LAUNCHER, 10);
+}
+
+/**
+ * Example of using DAC_LAUNCHER to generate waveform.
+ */
+void DAC_LAUNCHER_example(void)
+{
+	dac_async_enable_channel(&DAC_LAUNCHER, 0);
+	dac_async_register_callback(&DAC_LAUNCHER, DAC_ASYNC_CONVERSION_DONE_CB, tx_cb_DAC_LAUNCHER);
+	dac_async_write(&DAC_LAUNCHER, 0, example_DAC_LAUNCHER, 10);
+}
+
 /**
  * Example of using QSPI_FLASH to get N25Q256A status value,
  * and check bit 0 which indicate embedded operation is busy or not.

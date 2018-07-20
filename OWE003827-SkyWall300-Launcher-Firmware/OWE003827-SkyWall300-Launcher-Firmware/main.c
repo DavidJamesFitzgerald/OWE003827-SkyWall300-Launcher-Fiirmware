@@ -32,5 +32,6 @@ int main(void)
 	/* Replace with your application code */
 	while(true)
 	{
+		gpio_set_pin_level(STATUS_LED_OP,!gpio_get_pin_level(STATUS_LED_OP));
 	}
 }

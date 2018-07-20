@@ -24,7 +24,11 @@ driver_init.c
 
 examples\driver_examples.c
 
+hal\src\hal_adc_async.c
+
 hal\src\hal_atomic.c
+
+hal\src\hal_dac_async.c
 
 hal\src\hal_delay.c
 
@@ -56,9 +60,13 @@ hal\utils\src\utils_ringbuffer.c
 
 hal\utils\src\utils_syscalls.c
 
+hpl\adc\hpl_adc.c
+
 hpl\core\hpl_core_m4.c
 
 hpl\core\hpl_init.c
+
+hpl\dac\hpl_dac.c
 
 hpl\dmac\hpl_dmac.c
 

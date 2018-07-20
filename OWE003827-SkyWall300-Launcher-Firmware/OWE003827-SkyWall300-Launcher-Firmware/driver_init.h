@@ -21,6 +21,10 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_adc_async.h>
+
+#include <hal_dac_async.h>
+
 #include <hal_qspi_sync.h>
 
 #include <hal_usart_async.h>
@@ -34,6 +38,10 @@ extern "C" {
 
 #include "hal_usb_device.h"
 
+extern struct adc_async_descriptor ADC_LAUNCHER;
+
+extern struct dac_async_descriptor DAC_LAUNCHER;
+
 extern struct qspi_sync_descriptor   QSPI_FLASH;
 extern struct usart_async_descriptor USART_SYSTEM_SERCOM1;
 extern struct usart_async_descriptor USART_DIAG_SERCOM4;
@@ -43,6 +51,10 @@ extern struct spi_m_async_descriptor SPI_PROJECTILE_SERCOM5;
 extern struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
 
 extern struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
+
+void DAC_LAUNCHER_PORT_init(void);
+void DAC_LAUNCHER_CLOCK_init(void);
+void DAC_LAUNCHER_init(void);
 
 void QSPI_FLASH_PORT_init(void);
 void QSPI_FLASH_CLOCK_init(void);
@@ -68,8 +80,8 @@ void BREECH_CLOSE_MOTOR_CLK_OP_PORT_init(void);
 void BREECH_CLOSE_MOTOR_CLK_OP_CLOCK_init(void);
 void BREECH_CLOSE_MOTOR_CLK_OP_init(void);
 
-void USB_CLOCK_init(void);
-void USB_init(void);
+void USB_LAUNCHER_CLOCK_init(void);
+void USB_LAUNCHER_init(void);
 
 /**
  * \brief Perform system initialization, initialize pins and clocks for

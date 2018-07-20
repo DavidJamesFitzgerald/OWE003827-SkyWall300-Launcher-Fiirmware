@@ -11,17 +11,34 @@
 #include <utils.h>
 #include <hal_init.h>
 
+#include <hpl_adc_base.h>
+
+/* The channel amount for ADC */
+#define ADC_LAUNCHER_CH_AMOUNT 1
+
+/* The buffer size for ADC */
+#define ADC_LAUNCHER_BUFFER_SIZE 16
+
+/* The maximal channel number of enabled channels */
+#define ADC_LAUNCHER_CH_MAX 0
+
 /*! The buffer size for USART */
 #define USART_SYSTEM_SERCOM1_BUFFER_SIZE 16
 
 /*! The buffer size for USART */
 #define USART_DIAG_SERCOM4_BUFFER_SIZE 16
 
-struct usart_async_descriptor USART_SYSTEM_SERCOM1;
-struct usart_async_descriptor USART_DIAG_SERCOM4;
+struct adc_async_descriptor         ADC_LAUNCHER;
+struct adc_async_channel_descriptor ADC_LAUNCHER_ch[ADC_LAUNCHER_CH_AMOUNT];
+struct usart_async_descriptor       USART_SYSTEM_SERCOM1;
+struct usart_async_descriptor       USART_DIAG_SERCOM4;
 
+static uint8_t ADC_LAUNCHER_buffer[ADC_LAUNCHER_BUFFER_SIZE];
+static uint8_t ADC_LAUNCHER_map[ADC_LAUNCHER_CH_MAX + 1];
 static uint8_t USART_SYSTEM_SERCOM1_buffer[USART_SYSTEM_SERCOM1_BUFFER_SIZE];
 static uint8_t USART_DIAG_SERCOM4_buffer[USART_DIAG_SERCOM4_BUFFER_SIZE];
+
+struct dac_async_descriptor DAC_LAUNCHER;
 
 struct qspi_sync_descriptor QSPI_FLASH;
 
@@ -30,6 +47,78 @@ struct spi_m_async_descriptor SPI_PROJECTILE_SERCOM5;
 struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
 
 struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
+
+/**
+ * \brief ADC initialization function
+ *
+ * Enables ADC peripheral, clocks and initializes ADC driver
+ */
+static void ADC_LAUNCHER_init(void)
+{
+	hri_mclk_set_APBDMASK_ADC1_bit(MCLK);
+	hri_gclk_write_PCHCTRL_reg(GCLK, ADC1_GCLK_ID, CONF_GCLK_ADC1_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+	adc_async_init(&ADC_LAUNCHER,
+	               ADC1,
+	               ADC_LAUNCHER_map,
+	               ADC_LAUNCHER_CH_MAX,
+	               ADC_LAUNCHER_CH_AMOUNT,
+	               &ADC_LAUNCHER_ch[0],
+	               (void *)NULL);
+	adc_async_register_channel_buffer(&ADC_LAUNCHER, 0, ADC_LAUNCHER_buffer, ADC_LAUNCHER_BUFFER_SIZE);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(PROJECTILE_CHARGE_VOLTAGE_AN, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(PROJECTILE_CHARGE_VOLTAGE_AN, PINMUX_PB08B_ADC1_AIN0);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(PROJECTILE_CHARGE_CURRENT_AN, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(PROJECTILE_CHARGE_CURRENT_AN, PINMUX_PB09B_ADC1_AIN1);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(HW_VERSION_AN, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(HW_VERSION_AN, PINMUX_PB04B_ADC1_AIN6);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(RES_PRESSURE_A_AN, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(RES_PRESSURE_A_AN, PINMUX_PB05B_ADC1_AIN7);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(RES_PRESSURE_B_AN, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(RES_PRESSURE_B_AN, PINMUX_PD00B_ADC1_AIN14);
+}
+
+void DAC_LAUNCHER_PORT_init(void)
+{
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(PROJECTILE_CHARGE_VOLTAGE_AO, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(PROJECTILE_CHARGE_VOLTAGE_AO, PINMUX_PA02B_DAC_VOUT0);
+
+	// Disable digital pin circuitry
+	gpio_set_pin_direction(PROJECTILE_CHARGE_CURRENT_AO, GPIO_DIRECTION_OFF);
+
+	gpio_set_pin_function(PROJECTILE_CHARGE_CURRENT_AO, PINMUX_PA05B_DAC_VOUT1);
+}
+
+void DAC_LAUNCHER_CLOCK_init(void)
+{
+
+	hri_mclk_set_APBDMASK_DAC_bit(MCLK);
+	hri_gclk_write_PCHCTRL_reg(GCLK, DAC_GCLK_ID, CONF_GCLK_DAC_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+}
+
+void DAC_LAUNCHER_init(void)
+{
+	DAC_LAUNCHER_CLOCK_init();
+	dac_async_init(&DAC_LAUNCHER, DAC);
+	DAC_LAUNCHER_PORT_init();
+}
 
 void QSPI_FLASH_PORT_init(void)
 {
@@ -431,7 +520,7 @@ void BREECH_CLOSE_MOTOR_CLK_OP_init(void)
 	pwm_init(&BREECH_CLOSE_MOTOR_CLK_OP, TC7, _tc_get_pwm());
 }
 
-void USB_PORT_init(void)
+void USB_LAUNCHER_PORT_init(void)
 {
 
 	gpio_set_pin_direction(USB_DN,
@@ -531,7 +620,7 @@ void USB_PORT_init(void)
 #warning USB clock should be 48MHz ~ 0.25% clock, check your configuration!
 #endif
 
-void USB_CLOCK_init(void)
+void USB_LAUNCHER_CLOCK_init(void)
 {
 
 	hri_gclk_write_PCHCTRL_reg(GCLK, USB_GCLK_ID, CONF_GCLK_USB_SRC | GCLK_PCHCTRL_CHEN);
@@ -539,16 +628,44 @@ void USB_CLOCK_init(void)
 	hri_mclk_set_APBBMASK_USB_bit(MCLK);
 }
 
-void USB_init(void)
+void USB_LAUNCHER_init(void)
 {
-	USB_CLOCK_init();
+	USB_LAUNCHER_CLOCK_init();
 	usb_d_init();
-	USB_PORT_init();
+	USB_LAUNCHER_PORT_init();
 }
 
 void system_init(void)
 {
 	init_mcu();
+
+	// GPIO on PA06
+
+	// Set pin direction to output
+	gpio_set_pin_direction(ERROR_LED_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(ERROR_LED_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   true);
+
+	gpio_set_pin_function(ERROR_LED_OP, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PA07
+
+	// Set pin direction to output
+	gpio_set_pin_direction(STATUS_LED_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(STATUS_LED_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   true);
+
+	gpio_set_pin_function(STATUS_LED_OP, GPIO_PIN_FUNCTION_OFF);
 
 	// GPIO on PA20
 
@@ -710,6 +827,36 @@ void system_init(void)
 
 	gpio_set_pin_function(BREECH_MOTOR_nSLEEP_OP, GPIO_PIN_FUNCTION_OFF);
 
+	// GPIO on PC05
+
+	// Set pin direction to input
+	gpio_set_pin_direction(PROJECTILE_CURRENT_FB, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(PROJECTILE_CURRENT_FB,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_UP);
+
+	gpio_set_pin_function(PROJECTILE_CURRENT_FB, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PC06
+
+	// Set pin direction to input
+	gpio_set_pin_direction(PROJECTILE_VOLTAGE_FB, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(PROJECTILE_VOLTAGE_FB,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_UP);
+
+	gpio_set_pin_function(PROJECTILE_VOLTAGE_FB, GPIO_PIN_FUNCTION_OFF);
+
 	// GPIO on PC22
 
 	// Set pin direction to input
@@ -810,6 +957,10 @@ void system_init(void)
 
 	gpio_set_pin_function(DUMP_VALVE_COARSE_OP, GPIO_PIN_FUNCTION_OFF);
 
+	ADC_LAUNCHER_init();
+
+	DAC_LAUNCHER_init();
+
 	QSPI_FLASH_init();
 
 	USART_SYSTEM_SERCOM1_init();
@@ -821,5 +972,5 @@ void system_init(void)
 
 	BREECH_CLOSE_MOTOR_CLK_OP_init();
 
-	USB_init();
+	USB_LAUNCHER_init();
 }

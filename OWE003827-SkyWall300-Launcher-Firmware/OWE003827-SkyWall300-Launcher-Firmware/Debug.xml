@@ -18,6 +18,7 @@
       <Value>../hal/include</Value>
       <Value>../hal/utils/include</Value>
       <Value>../hpl/core</Value>
+      <Value>../hpl/dac</Value>
       <Value>../hpl/dmac</Value>
       <Value>../hpl/gclk</Value>
       <Value>../hpl/mclk</Value>
@@ -63,6 +64,7 @@
       <Value>../hal/include</Value>
       <Value>../hal/utils/include</Value>
       <Value>../hpl/core</Value>
+      <Value>../hpl/dac</Value>
       <Value>../hpl/dmac</Value>
       <Value>../hpl/gclk</Value>
       <Value>../hpl/mclk</Value>
@@ -91,6 +93,7 @@
       <Value>../hal/include</Value>
       <Value>../hal/utils/include</Value>
       <Value>../hpl/core</Value>
+      <Value>../hpl/dac</Value>
       <Value>../hpl/dmac</Value>
       <Value>../hpl/gclk</Value>
       <Value>../hpl/mclk</Value>

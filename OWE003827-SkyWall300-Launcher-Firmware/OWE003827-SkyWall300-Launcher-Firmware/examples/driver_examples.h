@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+void ADC_LAUNCHER_example(void);
+
+void DAC_LAUNCHER_example(void);
+
 void QSPI_FLASH_example(void);
 
 void USART_SYSTEM_SERCOM1_example(void);
