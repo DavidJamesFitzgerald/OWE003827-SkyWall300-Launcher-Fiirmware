@@ -21,6 +21,30 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_usart_async.h>
+#include <hal_pwm.h>
+#include <hpl_tc_base.h>
+#include <hal_pwm.h>
+#include <hpl_tc_base.h>
+
+extern struct usart_async_descriptor USART_SYSTEM_SERCOM1;
+
+extern struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
+
+extern struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
+
+void USART_SYSTEM_SERCOM1_PORT_init(void);
+void USART_SYSTEM_SERCOM1_CLOCK_init(void);
+void USART_SYSTEM_SERCOM1_init(void);
+
+void BREECH_LOCK_MOTOR_CLK_OP_PORT_init(void);
+void BREECH_LOCK_MOTOR_CLK_OP_CLOCK_init(void);
+void BREECH_LOCK_MOTOR_CLK_OP_init(void);
+
+void BREECH_CLOSE_MOTOR_CLK_OP_PORT_init(void);
+void BREECH_CLOSE_MOTOR_CLK_OP_CLOCK_init(void);
+void BREECH_CLOSE_MOTOR_CLK_OP_init(void);
+
 /**
  * \brief Perform system initialization, initialize pins and clocks for
  * peripherals
