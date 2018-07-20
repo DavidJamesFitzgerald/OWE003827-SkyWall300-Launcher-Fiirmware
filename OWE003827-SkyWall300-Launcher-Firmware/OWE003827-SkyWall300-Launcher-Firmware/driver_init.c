@@ -308,6 +308,34 @@ void system_init(void)
 
 	gpio_set_pin_function(BREECH_LOCK_MOTOR_DIR_OP, GPIO_PIN_FUNCTION_OFF);
 
+	// GPIO on PB16
+
+	// Set pin direction to output
+	gpio_set_pin_direction(FILL_VALVE_FINE_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(FILL_VALVE_FINE_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(FILL_VALVE_FINE_OP, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PB17
+
+	// Set pin direction to output
+	gpio_set_pin_direction(FILL_VALVE_COARSE_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(FILL_VALVE_COARSE_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(FILL_VALVE_COARSE_OP, GPIO_PIN_FUNCTION_OFF);
+
 	// GPIO on PB21
 
 	// Set pin direction to output
@@ -411,6 +439,36 @@ void system_init(void)
 
 	gpio_set_pin_function(BREECH_MOTOR_nSLEEP_OP, GPIO_PIN_FUNCTION_OFF);
 
+	// GPIO on PC22
+
+	// Set pin direction to input
+	gpio_set_pin_direction(SYSTEM_PRESSURE_ENABLE_FB, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(SYSTEM_PRESSURE_ENABLE_FB,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_UP);
+
+	gpio_set_pin_function(SYSTEM_PRESSURE_ENABLE_FB, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PC23
+
+	// Set pin direction to input
+	gpio_set_pin_direction(SYSTEM_CHARGE_ENABLE_FB, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(SYSTEM_CHARGE_ENABLE_FB,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_UP);
+
+	gpio_set_pin_function(SYSTEM_CHARGE_ENABLE_FB, GPIO_PIN_FUNCTION_OFF);
+
 	// GPIO on PC26
 
 	// Set pin direction to output
@@ -452,6 +510,34 @@ void system_init(void)
 	                   true);
 
 	gpio_set_pin_function(BREECH_CLOSE_MOTOR_DIR_OP, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PD20
+
+	// Set pin direction to output
+	gpio_set_pin_direction(DUMP_VALVE_FINE_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(DUMP_VALVE_FINE_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(DUMP_VALVE_FINE_OP, GPIO_PIN_FUNCTION_OFF);
+
+	// GPIO on PD21
+
+	// Set pin direction to output
+	gpio_set_pin_direction(DUMP_VALVE_COARSE_OP, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(DUMP_VALVE_COARSE_OP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(DUMP_VALVE_COARSE_OP, GPIO_PIN_FUNCTION_OFF);
 
 	USART_SYSTEM_SERCOM1_init();
 

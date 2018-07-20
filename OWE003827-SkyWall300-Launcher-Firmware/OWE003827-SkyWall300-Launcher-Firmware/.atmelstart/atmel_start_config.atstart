@@ -1014,6 +1014,44 @@ drivers:
         configuration:
           usb_gclk_selection: Generic clock generator 0
 pads:
+  SYSTEM_PRESSURE_ENABLE_FB:
+    name: PC22
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PC22
+    mode: Digital input
+    user_label: SYSTEM_PRESSURE_ENABLE_FB
+    configuration:
+      pad_pull_config: Pull-up
+  SYSTEM_CHARGE_ENABLE_FB:
+    name: PC23
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PC23
+    mode: Digital input
+    user_label: SYSTEM_CHARGE_ENABLE_FB
+    configuration:
+      pad_pull_config: Pull-up
+  DUMP_VALVE_FINE_OP:
+    name: PD20
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PD20
+    mode: Digital output
+    user_label: DUMP_VALVE_FINE_OP
+    configuration: null
+  DUMP_VALVE_COARSE_OP:
+    name: PD21
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PD21
+    mode: Digital output
+    user_label: DUMP_VALVE_COARSE_OP
+    configuration: null
+  FILL_VALVE_FINE_OP:
+    name: PB16
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PB16
+    mode: Digital output
+    user_label: FILL_VALVE_FINE_OP
+    configuration: null
+  FILL_VALVE_COARSE_OP:
+    name: PB17
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PB17
+    mode: Digital output
+    user_label: FILL_VALVE_COARSE_OP
+    configuration: null
   PROJECTILE_COMMS_ENABLE_OP:
     name: PB21
     definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PB21
