@@ -18,6 +18,8 @@ struct usart_async_descriptor USART_SYSTEM_SERCOM1;
 
 static uint8_t USART_SYSTEM_SERCOM1_buffer[USART_SYSTEM_SERCOM1_BUFFER_SIZE];
 
+struct spi_m_async_descriptor SPI_PROJECTILE_SERCOM5;
+
 struct pwm_descriptor BREECH_LOCK_MOTOR_CLK_OP;
 
 struct pwm_descriptor BREECH_CLOSE_MOTOR_CLK_OP;
@@ -62,6 +64,62 @@ void USART_SYSTEM_SERCOM1_init(void)
 	USART_SYSTEM_SERCOM1_PORT_init();
 }
 
+void SPI_PROJECTILE_SERCOM5_PORT_init(void)
+{
+
+	// Set pin direction to output
+	gpio_set_pin_direction(PROJECTILE_MOSI, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(PROJECTILE_MOSI,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(PROJECTILE_MOSI, PINMUX_PA23D_SERCOM5_PAD0);
+
+	// Set pin direction to output
+	gpio_set_pin_direction(PROJECTILE_SCK, GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(PROJECTILE_SCK,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_function(PROJECTILE_SCK, PINMUX_PA22D_SERCOM5_PAD1);
+
+	// Set pin direction to input
+	gpio_set_pin_direction(PROJECTILE_MISO, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(PROJECTILE_MISO,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(PROJECTILE_MISO, PINMUX_PA21C_SERCOM5_PAD3);
+}
+
+void SPI_PROJECTILE_SERCOM5_CLOCK_init(void)
+{
+	hri_gclk_write_PCHCTRL_reg(GCLK, SERCOM5_GCLK_ID_CORE, CONF_GCLK_SERCOM5_CORE_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+	hri_gclk_write_PCHCTRL_reg(GCLK, SERCOM5_GCLK_ID_SLOW, CONF_GCLK_SERCOM5_SLOW_SRC | (1 << GCLK_PCHCTRL_CHEN_Pos));
+
+	hri_mclk_set_APBDMASK_SERCOM5_bit(MCLK);
+}
+
+void SPI_PROJECTILE_SERCOM5_init(void)
+{
+	SPI_PROJECTILE_SERCOM5_CLOCK_init();
+	spi_m_async_init(&SPI_PROJECTILE_SERCOM5, SERCOM5);
+	SPI_PROJECTILE_SERCOM5_PORT_init();
+}
+
 void BREECH_LOCK_MOTOR_CLK_OP_PORT_init(void)
 {
 
@@ -102,9 +160,139 @@ void BREECH_CLOSE_MOTOR_CLK_OP_init(void)
 	pwm_init(&BREECH_CLOSE_MOTOR_CLK_OP, TC7, _tc_get_pwm());
 }
 
+void USB_PORT_init(void)
+{
+
+	gpio_set_pin_direction(USB_DN,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(USB_DN,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(USB_DN,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(USB_DN,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA24H_USB_DM"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA24H_USB_DM);
+
+	gpio_set_pin_direction(USB_DP,
+	                       // <y> Pin direction
+	                       // <id> pad_direction
+	                       // <GPIO_DIRECTION_OFF"> Off
+	                       // <GPIO_DIRECTION_IN"> In
+	                       // <GPIO_DIRECTION_OUT"> Out
+	                       GPIO_DIRECTION_OUT);
+
+	gpio_set_pin_level(USB_DP,
+	                   // <y> Initial level
+	                   // <id> pad_initial_level
+	                   // <false"> Low
+	                   // <true"> High
+	                   false);
+
+	gpio_set_pin_pull_mode(USB_DP,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_OFF);
+
+	gpio_set_pin_function(USB_DP,
+	                      // <y> Pin function
+	                      // <id> pad_function
+	                      // <i> Auto : use driver pinmux if signal is imported by driver, else turn off function
+	                      // <PINMUX_PA25H_USB_DP"> Auto
+	                      // <GPIO_PIN_FUNCTION_OFF"> Off
+	                      // <GPIO_PIN_FUNCTION_A"> A
+	                      // <GPIO_PIN_FUNCTION_B"> B
+	                      // <GPIO_PIN_FUNCTION_C"> C
+	                      // <GPIO_PIN_FUNCTION_D"> D
+	                      // <GPIO_PIN_FUNCTION_E"> E
+	                      // <GPIO_PIN_FUNCTION_F"> F
+	                      // <GPIO_PIN_FUNCTION_G"> G
+	                      // <GPIO_PIN_FUNCTION_H"> H
+	                      // <GPIO_PIN_FUNCTION_I"> I
+	                      // <GPIO_PIN_FUNCTION_J"> J
+	                      // <GPIO_PIN_FUNCTION_K"> K
+	                      // <GPIO_PIN_FUNCTION_L"> L
+	                      // <GPIO_PIN_FUNCTION_M"> M
+	                      // <GPIO_PIN_FUNCTION_N"> N
+	                      PINMUX_PA25H_USB_DP);
+}
+
+/* The USB module requires a GCLK_USB of 48 MHz ~ 0.25% clock
+ * for low speed and full speed operation. */
+#if (CONF_GCLK_USB_FREQUENCY > (48000000 + 48000000 / 400)) || (CONF_GCLK_USB_FREQUENCY < (48000000 - 48000000 / 400))
+#warning USB clock should be 48MHz ~ 0.25% clock, check your configuration!
+#endif
+
+void USB_CLOCK_init(void)
+{
+
+	hri_gclk_write_PCHCTRL_reg(GCLK, USB_GCLK_ID, CONF_GCLK_USB_SRC | GCLK_PCHCTRL_CHEN);
+	hri_mclk_set_AHBMASK_USB_bit(MCLK);
+	hri_mclk_set_APBBMASK_USB_bit(MCLK);
+}
+
+void USB_init(void)
+{
+	USB_CLOCK_init();
+	usb_d_init();
+	USB_PORT_init();
+}
+
 void system_init(void)
 {
 	init_mcu();
+
+	// GPIO on PA20
+
+	// Set pin direction to input
+	gpio_set_pin_direction(PROJECTILE_FITTED_FB, GPIO_DIRECTION_IN);
+
+	gpio_set_pin_pull_mode(PROJECTILE_FITTED_FB,
+	                       // <y> Pull configuration
+	                       // <id> pad_pull_config
+	                       // <GPIO_PULL_OFF"> Off
+	                       // <GPIO_PULL_UP"> Pull-up
+	                       // <GPIO_PULL_DOWN"> Pull-down
+	                       GPIO_PULL_DOWN);
+
+	gpio_set_pin_function(PROJECTILE_FITTED_FB, GPIO_PIN_FUNCTION_OFF);
 
 	// GPIO on PB00
 
@@ -253,7 +441,11 @@ void system_init(void)
 
 	USART_SYSTEM_SERCOM1_init();
 
+	SPI_PROJECTILE_SERCOM5_init();
+
 	BREECH_LOCK_MOTOR_CLK_OP_init();
 
 	BREECH_CLOSE_MOTOR_CLK_OP_init();
+
+	USB_init();
 }

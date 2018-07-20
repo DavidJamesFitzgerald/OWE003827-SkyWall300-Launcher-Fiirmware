@@ -165,6 +165,8 @@ static struct usart_configuration _usarts[] = {
 
 static struct _usart_async_device *_sercom1_dev = NULL;
 
+static struct _spi_async_dev *_sercom5_dev = NULL;
+
 static uint8_t _get_sercom_index(const void *const hw);
 static uint8_t _sercom_get_irq_num(const void *const hw);
 static void    _sercom_init_irq_param(const void *const hw, void *dev);
@@ -628,6 +630,10 @@ static void _sercom_init_irq_param(const void *const hw, void *dev)
 
 	if (hw == SERCOM1) {
 		_sercom1_dev = (struct _usart_async_device *)dev;
+	}
+
+	if (hw == SERCOM5) {
+		_sercom5_dev = (struct _spi_async_dev *)dev;
 	}
 }
 
@@ -2376,6 +2382,32 @@ static inline const struct sercomspi_regs_cfg *_spi_get_regs(const uint32_t hw_a
 }
 
 /**
+ *  \brief IRQ handler used
+ *  \param[in, out] p Pointer to SPI device instance.
+ */
+static void _spi_handler(struct _spi_async_dev *dev)
+{
+	void *                      hw = dev->prvt;
+	hri_sercomspi_intflag_reg_t st;
+
+	st = hri_sercomspi_read_INTFLAG_reg(hw);
+	st &= hri_sercomspi_read_INTEN_reg(hw);
+
+	if (st & SERCOM_SPI_INTFLAG_DRE) {
+		dev->callbacks.tx(dev);
+	} else if (st & SERCOM_SPI_INTFLAG_RXC) {
+		dev->callbacks.rx(dev);
+	} else if (st & SERCOM_SPI_INTFLAG_TXC) {
+		hri_sercomspi_clear_INTFLAG_reg(hw, SERCOM_SPI_INTFLAG_TXC);
+		dev->callbacks.complete(dev, 0);
+	} else if (st & SERCOM_SPI_INTFLAG_ERROR) {
+		hri_sercomspi_clear_STATUS_reg(hw, SERCOM_SPI_STATUS_BUFOVF);
+		hri_sercomspi_clear_INTFLAG_reg(hw, SERCOM_SPI_INTFLAG_ERROR);
+		dev->callbacks.complete(dev, ERR_OVERFLOW);
+	}
+}
+
+/**
  * \internal Sercom interrupt handler
  */
 void SERCOM1_0_Handler(void)
@@ -2402,6 +2434,35 @@ void SERCOM1_2_Handler(void)
 void SERCOM1_3_Handler(void)
 {
 	_sercom_usart_interrupt_handler(_sercom1_dev);
+}
+
+/**
+ * \internal Sercom interrupt handler
+ */
+void SERCOM5_0_Handler(void)
+{
+	_spi_handler(_sercom5_dev);
+}
+/**
+ * \internal Sercom interrupt handler
+ */
+void SERCOM5_1_Handler(void)
+{
+	_spi_handler(_sercom5_dev);
+}
+/**
+ * \internal Sercom interrupt handler
+ */
+void SERCOM5_2_Handler(void)
+{
+	_spi_handler(_sercom5_dev);
+}
+/**
+ * \internal Sercom interrupt handler
+ */
+void SERCOM5_3_Handler(void)
+{
+	_spi_handler(_sercom5_dev);
 }
 
 int32_t _spi_m_sync_init(struct _spi_m_sync_dev *dev, void *const hw)

@@ -854,6 +854,46 @@ drivers:
         configuration:
           core_gclk_selection: Generic clock generator 0
           slow_gclk_selection: Generic clock generator 3
+  SPI_PROJECTILE_SERCOM5:
+    user_label: SPI_PROJECTILE_SERCOM5
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::SERCOM5::driver_config_definition::SPI.Master::HAL:Driver:SPI.Master.Async
+    functionality: SPI
+    api: HAL:Driver:SPI_Master_Async
+    configuration:
+      spi_master_advanced: true
+      spi_master_arch_cpha: Sample input on leading edge
+      spi_master_arch_cpol: SCK is low when idle
+      spi_master_arch_dbgstop: Keep running
+      spi_master_arch_dord: MSB first
+      spi_master_arch_ibon: In data stream
+      spi_master_arch_runstdby: false
+      spi_master_baud_rate: 65000
+      spi_master_character_size: 8 bits
+      spi_master_dummybyte: 511
+      spi_master_rx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=3
+      required_signals:
+      - name: SERCOM5/PAD/0
+        pad: PA23
+        label: MOSI
+      - name: SERCOM5/PAD/1
+        pad: PA22
+        label: SCK
+      - name: SERCOM5/PAD/3
+        pad: PA21
+        label: MISO
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
   BREECH_LOCK_MOTOR_CLK_OP:
     user_label: BREECH_LOCK_MOTOR_CLK_OP
     definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::TC6::driver_config_definition::PWM::HAL:Driver:PWM
@@ -932,7 +972,85 @@ drivers:
           input: Generic clock generator 0
         configuration:
           tc_gclk_selection: Generic clock generator 0
+  USB:
+    user_label: USB
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::USB::driver_config_definition::USB.Device::HAL:Driver:USB.Device
+    functionality: USB
+    api: HAL:Driver:USB_Device
+    configuration:
+      usb_arch_ep0_cache: Cached by 64 bytes buffer
+      usb_arch_ep1_cache: Cached by 64 bytes buffer
+      usb_arch_ep2_cache: Cached by 64 bytes buffer
+      usb_arch_ep3_cache: Cached by 64 bytes buffer
+      usb_arch_ep4_cache: Cached by 64 bytes buffer
+      usb_arch_ep5_cache: Cached by 64 bytes buffer
+      usb_arch_ep6_cache: Cached by 64 bytes buffer
+      usb_arch_ep7_cache: Cached by 64 bytes buffer
+      usb_ep1_I_CACHE: No cache
+      usb_ep2_I_CACHE: No cache
+      usb_ep3_I_CACHE: No cache
+      usb_ep4_I_CACHE: No cache
+      usb_ep5_I_CACHE: No cache
+      usb_ep6_I_CACHE: No cache
+      usb_ep7_I_CACHE: No cache
+      usbd_arch_max_ep_n: 2 (EP 0x82 or 0x02)
+      usbd_arch_speed: Full speed
+      usbd_num_ep_sp: 4 (EP0 + 3 endpoints)
+    optional_signals: []
+    variant:
+      specification: default
+      required_signals:
+      - name: USB/DM
+        pad: PA24
+        label: Data-
+      - name: USB/DP
+        pad: PA25
+        label: Data+
+    clocks:
+      domain_group:
+        nodes:
+        - name: USB
+          input: Generic clock generator 0
+        configuration:
+          usb_gclk_selection: Generic clock generator 0
 pads:
+  PROJECTILE_FITTED_FB:
+    name: PA20
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA20
+    mode: Digital input
+    user_label: PROJECTILE_FITTED_FB
+    configuration:
+      pad_pull_config: Pull-down
+  PROJECTILE_MISO:
+    name: PA21
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA21
+    mode: Digital input
+    user_label: PROJECTILE_MISO
+    configuration: null
+  PROJECTILE_SCK:
+    name: PA22
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA22
+    mode: Digital output
+    user_label: PROJECTILE_SCK
+    configuration: null
+  PROJECTILE_MOSI:
+    name: PA23
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA23
+    mode: Digital output
+    user_label: PROJECTILE_MOSI
+    configuration: null
+  USB_DN:
+    name: PA24
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA24
+    mode: Advanced
+    user_label: USB_DN
+    configuration: null
+  USB_DP:
+    name: PA25
+    definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PA25
+    mode: Advanced
+    user_label: USB_DP
+    configuration: null
   TRIGGER_SAFE_SWITCH_FB:
     name: PB25
     definition: Atmel:SAME54_Drivers:0.0.1::SAME54P20A-AF::pad::PB25

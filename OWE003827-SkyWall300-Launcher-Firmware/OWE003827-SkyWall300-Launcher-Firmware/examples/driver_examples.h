@@ -14,6 +14,8 @@ extern "C" {
 
 void USART_SYSTEM_SERCOM1_example(void);
 
+void SPI_PROJECTILE_SERCOM5_example(void);
+
 void BREECH_LOCK_MOTOR_CLK_OP_example(void);
 
 void BREECH_CLOSE_MOTOR_CLK_OP_example(void);

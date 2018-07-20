@@ -28,6 +28,7 @@
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
+      <Value>../hpl/usb</Value>
       <Value>../hri</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
@@ -68,6 +69,7 @@
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
+      <Value>../hpl/usb</Value>
       <Value>../hri</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
@@ -91,6 +93,7 @@
       <Value>../hpl/ramecc</Value>
       <Value>../hpl/sercom</Value>
       <Value>../hpl/tc</Value>
+      <Value>../hpl/usb</Value>
       <Value>../hri</Value>
       <Value>%24(PackRepoDir)\atmel\SAME54_DFP\1.0.67\include</Value>
     </ListValues>
