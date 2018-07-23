@@ -69,6 +69,8 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../app/src/app_breech_functions.c \
+../app/src/app_comms_util.c \
+../app/src/app_projectile_functions.c \
 ../app/src/app_proj_comms.c \
 ../app/src/app_qspi_storage.c \
 ../app/src/app_system_comms.c \
@@ -126,6 +128,8 @@ ASM_SRCS +=
 
 OBJS +=  \
 app/src/app_breech_functions.o \
+app/src/app_comms_util.o \
+app/src/app_projectile_functions.o \
 app/src/app_proj_comms.o \
 app/src/app_qspi_storage.o \
 app/src/app_system_comms.o \
@@ -176,6 +180,8 @@ spi_nor_flash_main.o
 
 OBJS_AS_ARGS +=  \
 app/src/app_breech_functions.o \
+app/src/app_comms_util.o \
+app/src/app_projectile_functions.o \
 app/src/app_proj_comms.o \
 app/src/app_qspi_storage.o \
 app/src/app_system_comms.o \
@@ -226,6 +232,8 @@ spi_nor_flash_main.o
 
 C_DEPS +=  \
 app/src/app_breech_functions.d \
+app/src/app_comms_util.d \
+app/src/app_projectile_functions.d \
 app/src/app_proj_comms.d \
 app/src/app_qspi_storage.d \
 app/src/app_system_comms.d \
@@ -276,6 +284,8 @@ spi_nor_flash_main.d
 
 C_DEPS_AS_ARGS +=  \
 app/src/app_breech_functions.d \
+app/src/app_comms_util.d \
+app/src/app_projectile_functions.d \
 app/src/app_proj_comms.d \
 app/src/app_qspi_storage.d \
 app/src/app_system_comms.d \
@@ -341,6 +351,20 @@ LINKER_SCRIPT_DEP+=  \
 
 # AVR32/GNU C Compiler
 app/src/app_breech_functions.o: ../app/src/app_breech_functions.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAME54P20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/qspi" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/tc" -I"../hpl/usb" -I"../hri" -I"../spi_nor_flash" -I"../spi_nor_flash/s25fl116k" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAME54_DFP\1.0.67\include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+app/src/app_comms_util.o: ../app/src/app_comms_util.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAME54P20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/qspi" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/tc" -I"../hpl/usb" -I"../hri" -I"../spi_nor_flash" -I"../spi_nor_flash/s25fl116k" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAME54_DFP\1.0.67\include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+app/src/app_projectile_functions.o: ../app/src/app_projectile_functions.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAME54P20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/qspi" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/tc" -I"../hpl/usb" -I"../hri" -I"../spi_nor_flash" -I"../spi_nor_flash/s25fl116k" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAME54_DFP\1.0.67\include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

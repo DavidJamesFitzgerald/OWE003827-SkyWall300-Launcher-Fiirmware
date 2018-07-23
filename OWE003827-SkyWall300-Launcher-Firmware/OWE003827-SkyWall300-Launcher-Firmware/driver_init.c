@@ -17,16 +17,16 @@
 #define ADC_LAUNCHER_CH_AMOUNT 1
 
 /* The buffer size for ADC */
-#define ADC_LAUNCHER_BUFFER_SIZE 16
+#define ADC_LAUNCHER_BUFFER_SIZE 128
 
 /* The maximal channel number of enabled channels */
 #define ADC_LAUNCHER_CH_MAX 0
 
 /*! The buffer size for USART */
-#define USART_SYSTEM_SERCOM1_BUFFER_SIZE 16
+#define USART_SYSTEM_SERCOM1_BUFFER_SIZE 128
 
 /*! The buffer size for USART */
-#define USART_DIAG_SERCOM4_BUFFER_SIZE 16
+#define USART_DIAG_SERCOM4_BUFFER_SIZE 128
 
 struct adc_async_descriptor         ADC_LAUNCHER;
 struct adc_async_channel_descriptor ADC_LAUNCHER_ch[ADC_LAUNCHER_CH_AMOUNT];

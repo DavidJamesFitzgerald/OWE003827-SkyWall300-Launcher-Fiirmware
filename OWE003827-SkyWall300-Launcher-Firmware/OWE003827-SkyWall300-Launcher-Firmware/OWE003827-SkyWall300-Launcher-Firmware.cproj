@@ -471,10 +471,19 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\inc\app_analog_functions.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\inc\app_breech_functions.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\inc\app_comms_util.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\inc\app_globals.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\inc\app_projectile_functions.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\inc\app_proj_comms.h">
@@ -493,6 +502,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\src\app_breech_functions.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\src\app_comms_util.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\src\app_projectile_functions.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\src\app_proj_comms.c">

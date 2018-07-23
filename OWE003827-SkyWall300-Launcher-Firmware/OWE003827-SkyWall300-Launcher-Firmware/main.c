@@ -19,19 +19,22 @@
  */
   
 #include <atmel_start.h>
-
+#include "app/inc/app_globals.h"
 #include "app/inc/app_system_state_handler.h"
+
+struct globals_struct globals_s;
 
 int main(void)
 {
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
 
-	app_system_state_init();
+	//app_system_state_init();
 	
 	/* Replace with your application code */
 	while(true)
 	{
 		gpio_set_pin_level(STATUS_LED_OP,!gpio_get_pin_level(STATUS_LED_OP));
+		gpio_set_pin_level(ERROR_LED_OP,!gpio_get_pin_level(ERROR_LED_OP));
 	}
 }

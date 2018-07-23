@@ -17,4 +17,3 @@
  *  @brief		Contains Quad SPI storage functions. This file is editable.
  *
  */
-

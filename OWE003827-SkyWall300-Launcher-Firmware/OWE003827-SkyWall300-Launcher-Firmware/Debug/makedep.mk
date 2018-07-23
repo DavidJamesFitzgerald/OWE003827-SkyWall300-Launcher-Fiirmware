@@ -4,6 +4,10 @@
 
 app\src\app_breech_functions.c
 
+app\src\app_comms_util.c
+
+app\src\app_projectile_functions.c
+
 app\src\app_proj_comms.c
 
 app\src\app_qspi_storage.c
